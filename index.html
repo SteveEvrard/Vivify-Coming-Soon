@@ -84,7 +84,7 @@
     <div class="text-center max-w-xl">
       <img src="./images/logo.png" alt="Company logo" class="logo-glow mx-auto mb-8 h-[9.1rem] sm:h-[10.4rem] w-auto" onerror="this.style.display='none'" />
 
-      <video controls autoplay loop preload="auto" playsinline class="mx-auto mb-8 w-full max-w-xl rounded-lg shadow-lg ring-1 ring-white/10">
+      <video controls autoplay muted loop preload="auto" playsinline class="mx-auto mb-8 w-full max-w-xl rounded-lg shadow-lg ring-1 ring-white/10">
         <source src="./video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -104,6 +104,18 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const videoEl = document.querySelector('video');
+    if (videoEl) {
+      videoEl.muted = true;
+      const tryPlay = () => {
+        const p = videoEl.play();
+        if (p && typeof p.then === 'function') { p.catch(() => {}); }
+      };
+      if (document.visibilityState === 'visible') { tryPlay(); }
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') { tryPlay(); }
+      });
+    }
   </script>
 </body>
 </html>
