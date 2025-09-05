@@ -14,7 +14,6 @@
 
   <style>
     :root {
-      /* Easy theming - tweak these colors if you like */
       --bg: #75787B;                /* page background */
       --primary: #97D700;           /* primary theme color */
       --primary-rgb: 151, 215, 0;   /* primary as rgb for alpha uses */
@@ -25,7 +24,6 @@
 
     body { background-color: var(--bg); }
 
-    /* Soft mesh gradient behind everything */
     .mesh::before {
       content: "";
       position: fixed;
@@ -38,7 +36,6 @@
       z-index: -2;
     }
 
-    /* Subtle grid pattern, masked so it is strongest in the middle */
     .grid-overlay::after {
       content: "";
       position: fixed;
@@ -51,12 +48,10 @@
       z-index: -1;
     }
 
-    /* Make logo more prominent with a soft primary glow */
     .logo-glow {
       filter: drop-shadow(0 0 12px rgba(var(--primary-rgb), .28)) drop-shadow(0 0 32px rgba(var(--primary-rgb), .18));
     }
 
-    /* Shimmering shine that sweeps across the text */
     .shimmer-text {
       background-image: linear-gradient(
         90deg,
@@ -77,7 +72,6 @@
       100% { background-position: -200% 0; }
     }
 
-    /* Link underline accented with primary */
     .link-accent { text-decoration-color: rgba(var(--primary-rgb), .55); }
     .link-accent:hover { text-decoration-color: var(--primary); }
   </style>
@@ -88,16 +82,19 @@
 
   <main class="relative min-h-screen flex items-center justify-center p-6">
     <div class="text-center max-w-xl">
-      <!-- Replace /logo.svg with your logo path. The image hides itself if it fails to load. -->
       <img src="./images/logo.png" alt="Company logo" class="logo-glow mx-auto mb-8 h-[9.1rem] sm:h-[10.4rem] w-auto" onerror="this.style.display='none'" />
+
+      <video controls autoplay loop preload="auto" playsinline class="mx-auto mb-8 w-full max-w-xl rounded-lg shadow-lg ring-1 ring-white/10">
+        <source src="./video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       <h1 class="text-5xl sm:text-7xl font-semibold tracking-tight">
         <span class="shimmer-text">Coming soon</span>
       </h1>
       <p class="mt-4 text-slate-300">From pixels to power plants, we’re building better.</p>
 
-      <!-- Optional: quick contact link -->
-      <p class="mt-6"><a href="mailto:sevrard@vivify-technology.com" class="text-slate-200 underline link-accent">Contact us</a></p>
+      <p class="mt-6"><a href="mailto:info@vivify-technology.com" class="text-slate-200 underline link-accent">Contact us</a></p>
     </div>
 
     <footer class="absolute bottom-4 inset-x-0 text-center text-xs text-slate-400/80">
@@ -106,7 +103,6 @@
   </main>
 
   <script>
-    // Keeps the footer year current
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
